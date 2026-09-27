@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FitBuddy - All Users</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: 'Roboto', sans-serif; background: #0f1115; color: #f2f4f8; padding: 28px 16px;
+  }
+  h1 { font-size: 20px; margin-bottom: 18px; }
+  .tablewrap { overflow-x: auto; border: 1px solid #2a2f3a; border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 900px; }
+  th, td { border: 1px solid #2a2f3a; padding: 10px; text-align: left; vertical-align: top; }
+  th { background: #171a21; position: sticky; top: 0; }
+  td pre { white-space: pre-wrap; max-width: 260px; max-height: 160px; overflow-y: auto; margin: 0; font-family: inherit; }
+  .empty { text-align: center; color: #9aa3b2; padding: 30px; }
+</style>
+</head>
+<body>
+  <h1>📋 FitBuddy - All Users &amp; Workout Plans</h1>
+  {% if users %}
+  <div class="tablewrap">
+    <table>
+      <tr>
+        <th>User ID</th><th>Name</th><th>Age</th><th>Weight (kg)</th>
+        <th>Goal</th><th>Intensity</th><th>Original Plan</th><th>Updated Plan</th>
+      </tr>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.weight }}</td>
+        <td>{{ user.goal }}</td>
+        <td>{{ user.intensity }}</td>
+        <td><pre>{{ user.original_plan }}</pre></td>
+        <td><pre>{{ user.updated_plan }}</pre></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% else %}
+  <div class="empty">No users yet.</div>
+  {% endif %}
+</body>
+</html>
